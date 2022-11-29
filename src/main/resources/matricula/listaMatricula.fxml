@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.FlowPane?>
+
+
+<FlowPane columnHalignment="CENTER" prefHeight="421.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.sapiens.controllers.MatriculaController">
+    <children>
+        <TableView fx:id="table">
+        </TableView>
+    </children>
+</FlowPane>

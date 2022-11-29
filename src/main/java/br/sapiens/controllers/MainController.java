@@ -1,53 +1,57 @@
 package br.sapiens.controllers;
 
-import br.sapiens.configs.ConexaoSingleton;
+import br.sapiens.Main;
+import br.sapiens.configs.ConnectionSingleton;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 public class MainController {
     @FXML
-    private BorderPane painel;
+    private BorderPane pane;
 
-    public void initialize() throws IOException, SQLException {
-        var label = new Label("Sapiens");
-        painel.setBottom(label);
-
-        ConexaoSingleton s1 = new ConexaoSingleton();
-
-        Connection conAluno = s1.getCom();
-        ConexaoSingleton s2 = new ConexaoSingleton();
-        Connection conMateria = s2.getCom();
-
-        if(conAluno==conMateria)
-            System.out.println("As con sao iguais");
-        else
-            System.out.println("Nao sao iguais");
-
-        System.out.println("Connected to H2 in-memory database.");
-
-        String sql = "Create table alunos (matricula int primary key, nome varchar(200))";
-
-        Statement statement = conAluno.createStatement();
-
-        statement.execute(sql);
-
-        System.out.println("Created table alunos.");
-
-        sql = "Insert into alunos (matricula, nome) values (1, 'Chris')";
-
-        int rows = statement.executeUpdate(sql);
-
-        if (rows > 0) {
-            System.out.println("Inserted a new row.");
-        }
-
-        conAluno.close();
+    public void cadastrarAluno() throws IOException {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(Main.class.getResource("/aluno/cadastro.fxml"));
+        pane.setCenter(fxmlLoader.load());
     }
+
+
+    public void listarAluno() throws IOException {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(Main.class.getResource("/aluno/litaAluno.fxml"));
+        pane.setCenter(fxmlLoader.load());
+    }
+
+
+    public void cadastrarDisciplina() throws IOException {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(Main.class.getResource("/disciplina/cadastro.fxml"));
+        pane.setCenter(fxmlLoader.load());
+    }
+
+
+    public void listarDisciplina() throws IOException {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(Main.class.getResource("/disciplina/listar.fxml"));
+        pane.setCenter(fxmlLoader.load());
+    }
+
+    public void listarMatricula() throws IOException {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(Main.class.getResource("/matricula/listaMatricula.fxml"));
+        pane.setCenter(fxmlLoader.load());
+    }
+
+
+
+    public void initialize() throws IOException {
+        var label = new Label("Sapiens");
+        pane.setBottom(label);
+    }
+
 }

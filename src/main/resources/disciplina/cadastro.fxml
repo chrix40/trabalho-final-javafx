@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<FlowPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.sapiens.controllers.DisciplinaController">
+    <children>
+        <VBox spacing="15.0">
+            <children>
+                <HBox fillHeight="false" spacing="15.0">
+                    <children>
+                        <Label fx:id="id" />
+                    </children>
+                </HBox>
+                <HBox fillHeight="false" spacing="15.0">
+                    <children>
+                        <Label text="Descricao">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin></Label>
+                        <TextField fx:id="descricao" />
+                    </children>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </HBox>
+                <HBox fillHeight="false" spacing="15.0">
+                    <children>
+                        <Label text="Curso">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin></Label>
+                        <ChoiceBox fx:id="curso" prefHeight="25.0" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></ChoiceBox>
+                    </children>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </HBox>
+            <ButtonBar prefHeight="25.0" prefWidth="155.0">
+               <buttons>
+      
+                      <Button onAction="#salvar" prefHeight="25.0" prefWidth="76.0">Salvar</Button>
+               </buttons>
+               <VBox.margin>
+                  <Insets right="70.0" top="30.0" />
+               </VBox.margin>
+            </ButtonBar>
+            </children>
+        </VBox>
+    </children>
+</FlowPane>

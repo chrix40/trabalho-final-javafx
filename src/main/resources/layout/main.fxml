@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.sapiens.controllers.MainController">
+    <top>
+        <HBox BorderPane.alignment="CENTER">
+            <children>
+                <MenuBar prefWidth="700.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Aluno">
+                            <items>
+                                <MenuItem onAction="#cadastrarAluno" mnemonicParsing="false" text="Cadastrar" />
+                                <MenuItem onAction="#listarAluno" mnemonicParsing="false" text="Listar" />
+                            </items>
+                        </Menu>
+                    </menus>
 
-<BorderPane fx:id="painel"
-            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.sapiens.controllers.MainController">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Disciplina">
+                            <items>
+                                <MenuItem onAction="#cadastrarDisciplina" mnemonicParsing="false" text="Cadastrar" />
+                                <MenuItem onAction="#listarDisciplina" mnemonicParsing="false" text="Listar" />
+                            </items>
+                        </Menu>
+                    </menus>
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Matricula">
+                            <items>
+                                <MenuItem onAction="#listarMatricula" mnemonicParsing="false" text="Matriculas" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </HBox>
+        <BorderPane.margin>
+            <Insets bottom="30.0" />
+        </BorderPane.margin>
+    </top>
 </BorderPane>
