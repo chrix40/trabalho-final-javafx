@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 
-<FlowPane columnHalignment="CENTER" prefHeight="421.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.sapiens.controllers.AlunoController">
+<FlowPane columnHalignment="CENTER" prefHeight="446.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.sapiens.controllers.AlunoController">
     <children>
-        <TableView fx:id="table">
-        </TableView>
+        <TableView fx:id="table" prefHeight="426.0" prefWidth="561.0">
+         <FlowPane.margin>
+            <Insets />
+         </FlowPane.margin></TableView>
         <Pane fx:id="painelVinculo">
 
         </Pane>

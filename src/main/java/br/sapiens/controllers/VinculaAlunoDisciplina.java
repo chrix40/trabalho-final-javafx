@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class VinculaAlunoDisciplina extends AlunoController{
+public class VinculaAlunoDisciplina {
 
     private Aluno aluno;
 
@@ -40,7 +40,6 @@ public class VinculaAlunoDisciplina extends AlunoController{
     @FXML
     TableView table_matricula;
 
-
     public VinculaAlunoDisciplina() throws Exception {
     }
 
@@ -56,7 +55,6 @@ public class VinculaAlunoDisciplina extends AlunoController{
     public void initialize() throws IOException, SQLException {
         ObservableList<Disciplina> list = FXCollections.observableArrayList();
         list.addAll(dao.findAll());
-        System.out.println(list);
         vinculo.setItems(list);
 
         System.out.println(vinculo.getClass().toString());
@@ -64,14 +62,14 @@ public class VinculaAlunoDisciplina extends AlunoController{
         ObservableList<PeriodoEnum> listP = FXCollections.observableArrayList();
         listP.addAll(PeriodoEnum.values());
         Periodo.setItems(listP);
-        if (table != null){
-            TableColumn<Aluno, String> nome = new TableColumn("Nome");
-            nome.setCellValueFactory(new PropertyValueFactory("Nome"));
-        }
+
+        //ObservableList<PeriodoEnum> matriculas_list = FXCollections.observableArrayList();
+        //matriculas_list.addAll(daoMatricula.findAll());
+        //Periodo.setItems(listP);
 
         if(table_matricula != null) {
-            //TableColumn<Aluno, String> nome = new TableColumn("Nome");
-            //nome.setCellValueFactory(new PropertyValueFactory("nome"));
+            TableColumn<Aluno, String> nome = new TableColumn("Aluno");
+            nome.setCellValueFactory(new PropertyValueFactory("aluno"));
 
             TableColumn<Matricula, String> disc = new TableColumn("Disciplina");
             disc.setCellValueFactory(new PropertyValueFactory("disciplina"));
@@ -83,11 +81,10 @@ public class VinculaAlunoDisciplina extends AlunoController{
             table_matricula.getColumns().addAll(List.of(nome,disc,perio));
             table_matricula.getItems().addAll(dao.findAll());
         }
-        //ObservableList<Matricula> matriculas_list = FXCollections.observableArrayList();
-        //matriculas_list.addAll(daoMatricula.findAll());
-        //Periodo.setItems(matriculas_list);
-    }
 
+
+
+    }
 
     public void salvar() throws SQLException {
 
@@ -95,9 +92,13 @@ public class VinculaAlunoDisciplina extends AlunoController{
         Integer idInt = null;
         if (!id.isEmpty())
             idInt = Integer.valueOf(id);
+
+
         ObservableList<Disciplina> list = FXCollections.observableArrayList();
         list.addAll(dao.findAll());
+
         Optional<Disciplina> disc = list.stream().findAny(); // percorre a lista e pega o primeiro
+
         try {
             Matricula retorno = daoMatricula.save(new Matricula(aluno, disc.get(), (PeriodoEnum) Periodo.getValue()));
             System.out.println("\nAluno: "  + retorno.getAluno().getNome() + "\nDisciplina:" + retorno.getDisciplina() +  "\nCurso: "  +retorno.getDisciplina().getCurso() +  " \n"  + retorno.getPeriodo().toString());
@@ -114,6 +115,8 @@ public class VinculaAlunoDisciplina extends AlunoController{
 //                return;
 //            }
 //        }
+
+
     }
 
     public void carregaMatriculas(){
